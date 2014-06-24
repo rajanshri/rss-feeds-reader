@@ -1,0 +1,47 @@
+--
+-- Table structure for table `user_details`
+--
+
+CREATE TABLE IF NOT EXISTS `user_details` (
+  `UserID` varchar(50) NOT NULL,
+  `UserEmail` varchar(255) NOT NULL,
+  `UserPassword` varchar(255) NOT NULL,
+  `FirstName` varchar(50) NOT NULL,
+  `LastName` varchar(50) NOT NULL,
+  `IPAddress` varchar(20) NOT NULL,
+  `Status` enum('0','1','3') NOT NULL COMMENT '''0''=>''Inactive'', ''1''=>''Active'', ''3''=>''Delete''',
+  `AddDate` datetime NOT NULL,
+  `UpdateDate` datetime NOT NULL,
+  PRIMARY KEY (`UserID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Site User Datails';
+
+
+
+--
+-- Table structure for table `user_feed_details`
+--
+
+CREATE TABLE IF NOT EXISTS `user_feed_details` (
+  `UserFeedID` varchar(50) NOT NULL,
+  `UserID` varchar(50) NOT NULL,
+  `FeedURL` longtext NOT NULL,
+  `AddDate` datetime NOT NULL,
+  PRIMARY KEY (`UserFeedID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+--
+-- Table structure for table `user_log_details`
+--
+
+CREATE TABLE IF NOT EXISTS `user_log_details` (
+  `UserLoginID` varchar(50) NOT NULL,
+  `UserID` varchar(50) NOT NULL,
+  `LoginTime` datetime NOT NULL,
+  `LogoutTime` datetime NOT NULL,
+  `LoginDuration` time NOT NULL,
+  `LoginIPAddress` varchar(20) NOT NULL,
+  PRIMARY KEY (`UserLoginID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Login track details of users';
+
+
